@@ -2,11 +2,11 @@ class Solution {
     public int alternatingSum(int[] nums) {
         int sum = 0;
         boolean isEven = true;
-        for(int num : nums){
+        for(int i = 0; i < nums.length; i++){
             if(isEven){
-                sum += num;
+                sum += nums[i];
             }else{
-                sum -= num;
+                sum -= nums[i];
             }
             isEven = !isEven;
         }
