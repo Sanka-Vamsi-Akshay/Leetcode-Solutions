@@ -4,7 +4,7 @@ class Solution {
         for(int x : nums){
             tot += x;
         }
-        int val = 0, lSum = 0, rSum = tot;
+        int val = 0, lSum = 0;
         for(int i = 0; i < nums.length; i++){
             val = nums[i];
             nums[i] = Math.abs(val + (2 * lSum) - tot);
