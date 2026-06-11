@@ -12,11 +12,7 @@ class Solution {
         }
         List<Boolean> res = new ArrayList<>();
         for(int i : candies){
-            if(i + extraCandies >= maxx){
-                res.add(true);
-            }else{
-                res.add(false);
-            }
+            res.add(i + extraCandies >= maxx);
         }
         return res;
     }
