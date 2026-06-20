@@ -2,7 +2,11 @@ class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
         preSum = {0 : 0}
         x = sum(nums) - x
-        l = 0
+        l = len(nums)
+        if x == 0:
+            return l
+        if x < 0:
+            return -1
         tot = 0
         maxx = 0
         for idx, i in enumerate(nums):
@@ -14,7 +18,6 @@ class Solution:
                     maxx = idx - preSum[tot - x]
             if tot not in preSum:
                 preSum[tot] = idx
-            l += 1
         if maxx == 0:
             if x == 0:
                 return l
