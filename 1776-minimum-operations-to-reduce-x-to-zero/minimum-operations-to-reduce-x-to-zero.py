@@ -1,25 +1,23 @@
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
-        preSum = {0 : 0}
         x = sum(nums) - x
-        l = len(nums)
+        n = len(nums)
         if x == 0:
-            return l
+            return n
         if x < 0:
             return -1
         tot = 0
+        l = 0
         maxx = 0
         for idx, i in enumerate(nums):
             tot += i
+            while tot > x:
+                tot -= nums[l]
+                l += 1
             if tot == x:
-                maxx = idx + 1
-            elif (tot - x) in preSum:
-                if maxx < idx - preSum[tot - x]:
-                    maxx = idx - preSum[tot - x]
-            if tot not in preSum:
-                preSum[tot] = idx
+                val = idx - l + 1
+                if val > maxx:
+                    maxx = val
         if maxx == 0:
-            if x == 0:
-                return l
             return -1
-        return l - maxx
+        return n - maxx
