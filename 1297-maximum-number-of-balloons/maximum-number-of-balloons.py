@@ -10,4 +10,6 @@ class Solution:
                 case 'o': o += 1
                 case 'n': n += 1
                 case _: pass
+        if not(b or a or l or o or n):
+            return 0
         return min(b, a, l // 2, o // 2, n)
