@@ -9,7 +9,7 @@ class Solution:
         v = set()
         tmp = head
         while tmp:
+            if tmp in v:
+                return tmp
             v.add(tmp)
-            if tmp.next in v:
-                return tmp.next
             tmp = tmp.next
