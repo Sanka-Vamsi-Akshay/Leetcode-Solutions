@@ -1,2 +1,2 @@
 # Write your MySQL query statement below
-SELECT user_id, COUNT(promPt) AS prompt_count, ROUND(AVG(tokens), 2) AS avg_tokens FROM prompts GROUP BY user_id HAVING COUNT(user_id) > 2 AND COUNT(DISTINCT tokens) != 1 ORDER BY avg_tokens DESC;
+SELECT user_id, COUNT(promPt) AS prompt_count, ROUND(AVG(tokens), 2) AS avg_tokens FROM prompts GROUP BY user_id HAVING COUNT(user_id) > 2 AND MAX(tokens) > AVG(tokens) ORDER BY avg_tokens DESC;
