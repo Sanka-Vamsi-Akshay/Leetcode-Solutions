@@ -11,7 +11,6 @@ class Solution {
                 res = tmp;
             }
         }
-        float x = k;
-        return (double)res / x;
+        return (double)res / k;
     }
 }
