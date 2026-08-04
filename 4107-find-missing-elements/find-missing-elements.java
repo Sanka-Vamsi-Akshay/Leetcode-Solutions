@@ -1,6 +1,7 @@
 class Solution {
     public List<Integer> findMissingElements(int[] nums) {
-        int minn = 101, maxx = 0;
+        int minn = nums[0];
+        int maxx = nums[0];
         Set<Integer> s = new HashSet<>();
         for(int num : nums){
             minn = Math.min(minn, num);
