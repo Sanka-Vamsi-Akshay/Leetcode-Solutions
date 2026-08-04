@@ -3,12 +3,8 @@ class Solution {
         int minn = 101, maxx = 0;
         Set<Integer> s = new HashSet<>();
         for(int num : nums){
-            if(num < minn){
-                minn = num;
-            }
-            if(num > maxx){
-                maxx = num;
-            }
+            minn = Math.min(minn, num);
+            maxx = Math.max(maxx, num);
             s.add(num);
         }
         List<Integer> res = new ArrayList<>();
