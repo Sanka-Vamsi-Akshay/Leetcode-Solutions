@@ -1,6 +1,13 @@
 class Solution {
     public int largestInteger(int[] nums, int k) {
         int n = nums.length;
+        if(k == n){
+            int res = 0;
+            for(int num : nums){
+                res = Math.max(res, num);
+            }
+            return res;
+        }
         if(n == 1){
             return nums[0];
         }
@@ -21,13 +28,6 @@ class Solution {
                 return nums[0];
             }
             return -1;
-        }
-        if(k == n){
-            int res = 0;
-            for(int num : nums){
-                res = Math.max(res, num);
-            }
-            return res;
         }
         if(nums[0] == nums[n - 1]){
             return -1;
