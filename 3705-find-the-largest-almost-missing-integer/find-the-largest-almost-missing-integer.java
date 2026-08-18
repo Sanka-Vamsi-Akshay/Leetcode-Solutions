@@ -11,7 +11,27 @@ class Solution {
         if(n == 1){
             return nums[0];
         }
+        int[] freq = new int[51];
+        for(int num : nums){
+            freq[num]++;
+        }
         if(k == 1){
+            for(int i = 50; i >= 0; i--){
+                if(freq[i] == 1){
+                    return i;
+                }
+            }
+            return -1;
+        }
+        int res = -1;
+        if(freq[nums[0]] == 1){
+            res = nums[0];
+        }
+        if(freq[nums[n - 1]] == 1){
+            res = Math.max(res, nums[n - 1]);
+        }
+        return res;
+        /*if(k == 1){
             int t = n - 1;
             Arrays.sort(nums);
             for(int i = n - 1; i >= 0; i--){
@@ -56,6 +76,6 @@ class Solution {
             return n1;
         }else{
             return n2;
-        }
+        }*/
     }
 }
