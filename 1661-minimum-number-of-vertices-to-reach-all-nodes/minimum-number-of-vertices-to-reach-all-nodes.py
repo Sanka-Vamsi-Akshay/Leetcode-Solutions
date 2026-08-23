@@ -5,8 +5,7 @@ class Solution(object):
         :type edges: List[List[int]]
         :rtype: List[int]
         """
-        res = set(range(n))
-        for i, j in edges:
-            if j in res:
-                res.remove(j)
-        return list(res)
+        indegree = [0] * n
+        for _, i in edges:
+            indegree[i] = 1
+        return [i for i, j in enumerate(indegree) if j == 0]
