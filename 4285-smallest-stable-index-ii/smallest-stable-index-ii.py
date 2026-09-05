@@ -7,8 +7,8 @@ class Solution:
             minn = min(minn, nums[i])
             minVals[i] = minn
         maxx = 0
-        for i, j in enumerate(nums):
-            maxx = max(maxx, j)
+        for i in range(l):
+            maxx = max(maxx, nums[i])
             if maxx - minVals[i] <= k:
                 return i
         return -1
