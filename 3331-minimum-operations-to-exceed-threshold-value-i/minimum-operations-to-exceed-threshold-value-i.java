@@ -3,7 +3,7 @@ class Solution {
         int res = 0;
         for(int num : nums){
             if(num < k){
-                res += 1;
+                res++;
             }
         }
         return res;
