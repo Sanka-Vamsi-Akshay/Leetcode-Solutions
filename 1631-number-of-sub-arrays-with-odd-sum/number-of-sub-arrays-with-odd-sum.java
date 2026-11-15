@@ -4,13 +4,11 @@ class Solution {
         for(int num : arr){
             tot += num;
             if(tot % 2 == 0){
-                evenCnt += 1;
+                evenCnt++;
                 res += oddCnt;
-                evenCnt %= mod;
             }else{
-                oddCnt += 1;
+                oddCnt++;
                 res += evenCnt;
-                oddCnt %= mod;
             }
             res %= mod;
         }
