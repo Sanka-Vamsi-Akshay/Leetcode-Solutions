@@ -1,19 +1,6 @@
 class Solution:
-    def findBox(self, row: int, col: int) -> int:
-        if row < 3:
-            if col < 3: return 0
-            elif col < 6: return 1
-            else: return 2
-        elif row < 6:
-            if col < 3: return 3
-            elif col < 6: return 4
-            else: return 5
-        else:
-            if col < 3: return 6
-            elif col < 6: return 7
-            else: return 8
     def check(self, row, col, num):
-        if (num in self.rows[row]) or (num in self.cols[col]) or (num in self.boxes[self.findBox(row, col)]):
+        if (num in self.rows[row]) or (num in self.cols[col]) or (num in self.boxes[((row // 3) * 3) + (col // 3)]):
             return False
         return True
     def find(self, row, col):
@@ -33,7 +20,8 @@ class Solution:
                 self.board[row][col] = str(num)
                 self.rows[row].add(str(num))
                 self.cols[col].add(str(num))
-                self.boxes[self.findBox(row, col)].add(str(num))
+                b = ((row // 3) * 3) + (col // 3)
+                self.boxes[b].add(str(num))
                 if col == 8:
                     if self.find(row + 1, 0):
                         return True
@@ -43,7 +31,7 @@ class Solution:
                 self.board[row][col] = '.'
                 self.rows[row].remove(str(num))
                 self.cols[col].remove(str(num))
-                self.boxes[self.findBox(row, col)].remove(str(num))
+                self.boxes[b].remove(str(num))
 
     def solveSudoku(self, board: list[list[str]]) -> None:
         """
@@ -58,7 +46,7 @@ class Solution:
                 if board[i][j] != '.':
                     self.rows[i].add(board[i][j])
                     self.cols[j].add(board[i][j])
-                    self.boxes[self.findBox(i, j)].add(board[i][j])
+                    self.boxes[((i // 3) * 3) + (j // 3)].add(board[i][j])
         self.find(0, 0)
         return self.board
         
